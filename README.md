@@ -1,1 +1,3 @@
 # eCommerce_Sales
+
+Aim of the project was...
