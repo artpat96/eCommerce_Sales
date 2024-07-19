@@ -1,0 +1,33 @@
+SILVER LAYER:
+
+Operations required for particular dataframes compared to source data:
+- payments_df - add timestamp column
+- products_df - keep only product_id, product_category columns and measures (3 columns), change contents of category column to uppercase
+- sellers_df - get rid of zip_code column
+- orders_df - get rid of carrier_date column, in order_status change 'invoiced' to 'delayed', adjust names of 2 last columns
+- order_items_df - get rid of shipping_limit_date column, add total_value column (sum of price and freight_value)
+- customers_df - change name of customer_zip_code_prefix to zip_code
+
+General changes:
+- naming format of all the columns standarized ('_' instead of ' ', only small letters)
+- change formats to parquet (columnar format)
+Load adjusted files into a newly created bucket
+
+GOLD LAYER:
+
+Load files from silver bucket and create 2 main dataframes:
+ - final_orders consisting of order_items, orders, sellers and customers;
+ - final_product_payments consisting of products and payments;
+Load them to golden layer bucket
+
+Perform the following aggregations:
+- find products with the largest dimensions;
+- largest dimensions < 150000 cm^3;
+- filter only toys;
+- find the most and least expensive orders;
+- count transactions per day;
+- count sum of transactions month by month;
+- check the number of undelivered packages;
+- find the best destinations (most orders);
+
+Plots the most interesting things and show them as an examples.
