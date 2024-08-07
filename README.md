@@ -1,14 +1,18 @@
 # eCommerce_Sales
 
+### Introduction
+
 The goal of the project was to perform 3 main steps representing an ETL job. 
-The architecture of the project is illustrated in the repository in the architecture.jpg file.
+The architecture of the project is illustrated in the repository in the [Architecture](architecture.jpg) file.
 
 To keep the data clear on each step, the bucket in AWS S3 was divided into 3 main parts representing the layers of data stores (bronze - raw, unstructured data, silver - processed data, gold - data intended for business aggregations).
+
+Schemas of raw tables can be found in the [Schema](schemas.jpg) file.
 
 ### Step 1 - Data Ingestion
 
 This step focused on acquiring data from files of various formats, entering them into a bucket in AWS S3 and ingesting them into notebooks located in the Databricks space.
-Schemas of raw tables can be found in schemas.jpg file.
+[Data Ingestion](Ingesting_Data.ipynb)
 
 ### Step 2 - Data Transformation
 
@@ -17,11 +21,11 @@ This step was to transform the data according to the guidelines dissected in the
 ### Step 3 - Aggregations
 
 In this step, new denormalized tables were created. The data and aggregations extracted in the requirements.txt file were also extracted. The individual charts created with Python's matplotlib module were also placed in the Spark notebook responsible for this step.
-Step 2 and 3 can be found in Data Transformation notebook.
+Step 2 and 3 can be found in [Data Transformation](Data_Transformations.ipynb) notebook.
 
 ### Step 4 - Data Warehouse creation
 
-The final step is to integrate AWS with Snowflake to create a Data Warehouse and keep the data there for further analysis. This step was done with the help of a script load_into_snowflake.sql written directly on Swnoflake. Connection between AWS and Snowflake was established in the backend.
+The final step is to integrate AWS with Snowflake to create a Data Warehouse and keep the data there for further analysis. This step was done with the help of a [Script](load_into_snowflake.sql) written directly on Snowflake. Connection between AWS and Snowflake was established in the backend.
 
 
 ## Examples
